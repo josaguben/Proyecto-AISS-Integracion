@@ -1,6 +1,9 @@
 
 package aiss.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -70,6 +73,16 @@ public class CalendarList {
     @JsonProperty("conferenceProperties")
     private ConferenceProperties conferenceProperties;
   
+    private List<Calendars> calendarList;
+    
+    public CalendarList()	{
+    	
+    }
+    public CalendarList(String summary) {
+    	this.summary = summary;
+    	
+    }
+    
     @JsonProperty("kind")
     public String getKind() {
         return kind;
@@ -340,4 +353,39 @@ public class CalendarList {
         return this;
     }
 
-}
+	public List<Calendars> getCalendarLists() {
+		return calendarList;
+	}
+
+	public Calendars getCalendar(String id) {
+		Calendars calendar = null;
+
+		if(calendarList == null) {
+			return null;
+		}
+			for(Calendars c: calendarList) {
+				if(c.getId().equals(id)) {
+					calendar = c;
+					break;
+				}
+			}
+			return calendar;
+		}
+		
+	public void addCalendar(Calendars c) {
+		if(calendarList==null) {
+			calendarList = new ArrayList<Calendars>();
+		}
+		calendarList.add(c);
+	}
+	public void deleteCalendar(Calendars c) {
+		calendarList.remove(c);
+	}
+	public void deleteCalendar(String id) {
+		Calendars c = getCalendar(id);
+		if(c!=null) {
+			calendarList.remove(c);
+		}
+	}
+	}
+
