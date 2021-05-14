@@ -15,6 +15,13 @@ public class Calendars {
 	public Calendars(String summary) {
 		this.summary = summary;
 		}
+	public Calendars(String summary, String description, String location, String timeZone, ConferenceProperties conferenceProperties) {
+		this.summary = summary;
+		this.description = description;
+		this.location = location;
+		this.timeZone = timeZone;
+		this.conferenceProperties = conferenceProperties;
+	}
 
 	public String getId() {
 		return id;
