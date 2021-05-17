@@ -39,81 +39,71 @@ public class MapCalendarListRepository implements CalendarListRepository{
 		EventsMap = new HashMap<String,Event>();
 		
 	}
-	
-	@Override
-	public void addEvent(Event e) {
-		String id = "e" + index++;
-		e.setId(id);
-		EventsMap.put(id, e);
-	}
-	
-	
-	@Override
-	public Event getEvent(String id) {
-		return EventsMap.get(id);
-	}
-
-	
-	@Override
-	public void deleteEvent(String id) {
-		EventsMap.remove(id);	
-	}
-	
-	@Override
-	public void deleteEvent(Event e) {
-		EventsMap.remove(e.getId());	
-	}
-	
-	@Override
-	public void updateEvent(Event e) {
-		EventsMap.put(e.getId(), e);		
-	}
-	
-	public Collection<Event> getAllEvents(){
-		return EventsMap.values();
-	}
-	
-	
-
 
 	@Override
-	public void addCalendar(Calendars c) {
+	public void addCalendar(Calendar c) {
 		String id = "c" + index++;
-		c.setId(id);
-		calendarsMap.put(id, c);
 	}
-
-
 
 	@Override
 	public void deleteCalendar(Calendar c) {
-		calendarsMap.remove(c.getId());
+		// TODO Auto-generated method stub
+		
 	}
-
 
 	@Override
 	public void deleteCalendar(String id) {
-		calendarsMap.remove(id);
+		// TODO Auto-generated method stub
 		
 	}
-
 
 	@Override
 	public void updateCalendar(Calendar c) {
-		calendarsMap.put(c.getId(), c);
+		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
+	public Calendar getCalendar(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<Event> getAllEvents() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<Task> getAllTasks() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public Collection<Calendar> getAllCalendars() {
-		return calendarsMap.values();
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
+
 	@Override
-	public Calendar getCalendar(String id) {
-		return calendarsMap.get(id);
+	public Collection<CalendarList> getAllCalendarList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
+
+	@Override
+	public void deleteCalendarList(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteCalendarList(Calendar c) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }	
 
