@@ -1,5 +1,5 @@
 package aiss.model;
 
-public class Events {
+public class Event {
 
 }

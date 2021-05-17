@@ -18,8 +18,8 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 import org.jboss.resteasy.spi.BadRequestException;
 import org.jboss.resteasy.spi.NotFoundException;
 
+import aiss.model.Calendar;
 import aiss.model.CalendarList;
-import aiss.model.Calendars;
 import aiss.model.repository.CalendarListRepository;
 import aiss.model.repository.MapCalendarListRepository;
 
@@ -45,7 +45,7 @@ public class CalendarListResource {
 	
 	@GET
 	@Produces("application/json")
-	public Collection<Calendars> getAllCallendars()
+	public Collection<Calendar> getAllCallendars()
 	{
 		return repository.getAllCalendars();
 	}
@@ -54,9 +54,9 @@ public class CalendarListResource {
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public Calendars getCalendars(@PathParam("id") String id)
+	public Calendar getCalendars(@PathParam("id") String id)
 	{
-		Calendars c = repository.getCalendar(id);
+		Calendar c = repository.getCalendar(id);
 		
 		if (c == null) {
 			throw new NotFoundException("The playlist with id="+ id +" was not found");			
@@ -71,7 +71,7 @@ public class CalendarListResource {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response addCalendar(@Context UriInfo uriInfo, Calendars c) {
+	public Response addCalendar(@Context UriInfo uriInfo, Calendar c) {
 		if (c.getId() == null || "".equals(c.getId()))
 			throw new BadRequestException("The name of the playlist must not be null");
 

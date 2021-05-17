@@ -6,14 +6,16 @@ import java.util.Map;
 
 import aiss.model.Calendar;
 import aiss.model.CalendarList;
-import aiss.model.Calendars;
 import aiss.model.Event;
+import aiss.model.Task;
 
 public class MapCalendarListRepository implements CalendarListRepository{
 		
 	Map<String, Calendar> calendarsMap;
 	Map<String, CalendarList> calendarListMap;
 	Map<String, Event> EventsMap;
+	Map<String, Task> TaskMap;
+
 
 
 	private static MapCalendarListRepository instance = null;
@@ -84,7 +86,7 @@ public class MapCalendarListRepository implements CalendarListRepository{
 
 
 	@Override
-	public void deleteCalendar(Calendars c) {
+	public void deleteCalendar(Calendar c) {
 		calendarsMap.remove(c.getId());
 	}
 
@@ -97,19 +99,19 @@ public class MapCalendarListRepository implements CalendarListRepository{
 
 
 	@Override
-	public void updateCalendar(Calendars c) {
+	public void updateCalendar(Calendar c) {
 		calendarsMap.put(c.getId(), c);
 		
 	}
 
 
 	@Override
-	public Collection<Calendars> getAllCalendars() {
+	public Collection<Calendar> getAllCalendars() {
 		return calendarsMap.values();
 	}
 	
 	@Override
-	public Calendars getCalendar(String id) {
+	public Calendar getCalendar(String id) {
 		return calendarsMap.get(id);
 	}
 	

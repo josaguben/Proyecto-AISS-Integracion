@@ -1,5 +1,11 @@
 package aiss.model;
 
-public class CalendarList {
+import java.util.List;
 
+public class CalendarList {
+	
+	String id;
+	String title;
+	CalendarListType calendarListType;
+	List<Calendar> calendarList;
 }
