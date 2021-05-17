@@ -1,12 +1,9 @@
 package aiss.model.repository;
 
 import java.util.Collection;
-import java.util.List;
-
 import aiss.model.CalendarList;
 import aiss.model.Calendars;
 import aiss.model.Event;
-import aiss.model.Song;
 
 public interface CalendarListRepository {
 	
@@ -18,11 +15,7 @@ public interface CalendarListRepository {
 	public void updateCalendar(Calendars c);
 	public Calendars getCalendar(String id);
 	public Collection<Calendars> getAllCalendars();
-	
-	// CalendarList
-	public void addCalendarList(CalendarList cl);
-	public CalendarList getCalendarList(String id);
-	
+		
 	
 	//Event
 	public void addEvent(Event e);

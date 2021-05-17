@@ -2,13 +2,11 @@ package aiss.model.repository;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import aiss.model.CalendarList;
 import aiss.model.Calendars;
 import aiss.model.Event;
-import aiss.model.Song;
 
 public class MapCalendarListRepository implements CalendarListRepository{
 		
@@ -82,10 +80,6 @@ public class MapCalendarListRepository implements CalendarListRepository{
 		calendarsMap.put(id, c);
 	}
 
-	@Override
-	public CalendarList getCalendarList(String id) {
-		return calendarListMap.get(id);
-	}
 
 
 	@Override
@@ -118,19 +112,5 @@ public class MapCalendarListRepository implements CalendarListRepository{
 		return calendarsMap.get(id);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	@Override
-	public void addCalendarList(CalendarList cl) {
-		String id = "primary";
-		cl.setId(id);
-		calendarListMap.put(id, cl);
-		
-	}
+}	
 
-}

@@ -20,12 +20,15 @@ import org.jboss.resteasy.spi.NotFoundException;
 
 import aiss.model.CalendarList;
 import aiss.model.Calendars;
-import aiss.model.Playlist;
 import aiss.model.repository.CalendarListRepository;
 import aiss.model.repository.MapCalendarListRepository;
 
 @Path("/calendarList")
 public class CalendarListResource {
+	
+	String GOOGLE_CALENDAR_API_KEY = "AIzaSyCGJRr_aK1DeSbaPCkbUOLl0KoIx_mQmuU";
+	String calendarId = "";
+	String uri = "https://www.googleapis.com/calendar/v3/users/me/calendarList/" + calendarId + "key=" + GOOGLE_CALENDAR_API_KEY;
 	
 	
 	/*Singleton */
@@ -46,7 +49,7 @@ public class CalendarListResource {
 	
 	@GET
 	@Produces("application/json")
-	public Collection<Calendars> getAll()
+	public Collection<Calendars> getAllCallendars()
 	{
 		return repository.getAllCalendars();
 	}
@@ -55,7 +58,7 @@ public class CalendarListResource {
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public Calendars get(@PathParam("id") String id)
+	public Calendars getCalendars(@PathParam("id") String id)
 	{
 		Calendars c = repository.getCalendar(id);
 		
@@ -75,19 +78,21 @@ public class CalendarListResource {
 	public Response addCalendar(@Context UriInfo uriInfo, Calendars c) {
 		if (c.getId() == null || "".equals(c.getId()))
 			throw new BadRequestException("The name of the playlist must not be null");
-		
-		/*if (c.getSongs()!=null)
-			throw new BadRequestException("The songs property is not editable.");*/
 
 		repository.addCalendar(c);
 
-		// Builds the response. Returns the playlist the has just been added.
+		// Builds the response. Returns the calendar the has just been added.
 		UriBuilder ub = uriInfo.getAbsolutePathBuilder().path(this.getClass(), "get");
 		URI uri = ub.build(c.getId());
 		ResponseBuilder resp = Response.created(uri);
 		resp.entity(c);			
 		return resp.build();
 	}
+	
+	
+	
+	
+	
 	
 	
 	

@@ -1,36 +1,32 @@
 
 package aiss.model;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 import javax.annotation.Generated;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.google.api.services.calendar.model.CalendarListEntry.NotificationSettings;
-import com.google.api.services.calendar.model.ConferenceProperties;
-import com.google.api.services.calendar.model.Event.Reminders;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "kind",
+    "etag",
     "id",
     "summary",
-    "description",
-    "location",
     "timeZone",
-    "summaryOverride",
     "colorId",
     "backgroundColor",
     "foregroundColor",
-    "hidden",
     "selected",
     "accessRole",
     "defaultReminders",
     "notificationSettings",
     "primary",
-    "deleted",
     "conferenceProperties"
 })
 @Generated("jsonschema2pojo")
@@ -38,51 +34,35 @@ public class CalendarList {
 
     @JsonProperty("kind")
     private String kind;
+    @JsonProperty("etag")
+    private String etag;
     @JsonProperty("id")
     private String id;
     @JsonProperty("summary")
     private String summary;
-    @JsonProperty("description")
-    private String description;
-    @JsonProperty("location")
-    private String location;
     @JsonProperty("timeZone")
     private String timeZone;
-    @JsonProperty("summaryOverride")
-    private String summaryOverride;
     @JsonProperty("colorId")
     private String colorId;
     @JsonProperty("backgroundColor")
     private String backgroundColor;
     @JsonProperty("foregroundColor")
     private String foregroundColor;
-    @JsonProperty("hidden")
-    private Boolean hidden;
     @JsonProperty("selected")
     private Boolean selected;
     @JsonProperty("accessRole")
     private String accessRole;
     @JsonProperty("defaultReminders")
-    private Reminders defaultReminders;
+    private List<DefaultReminder> defaultReminders = null;
     @JsonProperty("notificationSettings")
     private NotificationSettings notificationSettings;
     @JsonProperty("primary")
     private Boolean primary;
-    @JsonProperty("deleted")
-    private Boolean deleted;
     @JsonProperty("conferenceProperties")
     private ConferenceProperties conferenceProperties;
-  
-    private List<Calendars> calendarList;
-    
-    public CalendarList()	{
-    	
-    }
-    public CalendarList(String summary) {
-    	this.summary = summary;
-    	
-    }
-    
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
     @JsonProperty("kind")
     public String getKind() {
         return kind;
@@ -95,6 +75,21 @@ public class CalendarList {
 
     public CalendarList withKind(String kind) {
         this.kind = kind;
+        return this;
+    }
+
+    @JsonProperty("etag")
+    public String getEtag() {
+        return etag;
+    }
+
+    @JsonProperty("etag")
+    public void setEtag(String etag) {
+        this.etag = etag;
+    }
+
+    public CalendarList withEtag(String etag) {
+        this.etag = etag;
         return this;
     }
 
@@ -128,36 +123,6 @@ public class CalendarList {
         return this;
     }
 
-    @JsonProperty("description")
-    public String getDescription() {
-        return description;
-    }
-
-    @JsonProperty("description")
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public CalendarList withDescription(String description) {
-        this.description = description;
-        return this;
-    }
-
-    @JsonProperty("location")
-    public String getLocation() {
-        return location;
-    }
-
-    @JsonProperty("location")
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public CalendarList withLocation(String location) {
-        this.location = location;
-        return this;
-    }
-
     @JsonProperty("timeZone")
     public String getTimeZone() {
         return timeZone;
@@ -170,21 +135,6 @@ public class CalendarList {
 
     public CalendarList withTimeZone(String timeZone) {
         this.timeZone = timeZone;
-        return this;
-    }
-
-    @JsonProperty("summaryOverride")
-    public String getSummaryOverride() {
-        return summaryOverride;
-    }
-
-    @JsonProperty("summaryOverride")
-    public void setSummaryOverride(String summaryOverride) {
-        this.summaryOverride = summaryOverride;
-    }
-
-    public CalendarList withSummaryOverride(String summaryOverride) {
-        this.summaryOverride = summaryOverride;
         return this;
     }
 
@@ -233,21 +183,6 @@ public class CalendarList {
         return this;
     }
 
-    @JsonProperty("hidden")
-    public Boolean getHidden() {
-        return hidden;
-    }
-
-    @JsonProperty("hidden")
-    public void setHidden(Boolean hidden) {
-        this.hidden = hidden;
-    }
-
-    public CalendarList withHidden(Boolean hidden) {
-        this.hidden = hidden;
-        return this;
-    }
-
     @JsonProperty("selected")
     public Boolean getSelected() {
         return selected;
@@ -279,22 +214,22 @@ public class CalendarList {
     }
 
     @JsonProperty("defaultReminders")
-    public Object getDefaultReminders() {
+    public List<DefaultReminder> getDefaultReminders() {
         return defaultReminders;
     }
 
     @JsonProperty("defaultReminders")
-    public void setDefaultReminders(Reminders defaultReminders) {
+    public void setDefaultReminders(List<DefaultReminder> defaultReminders) {
         this.defaultReminders = defaultReminders;
     }
 
-    public CalendarList withDefaultReminders(Reminders defaultReminders) {
+    public CalendarList withDefaultReminders(List<DefaultReminder> defaultReminders) {
         this.defaultReminders = defaultReminders;
         return this;
     }
 
     @JsonProperty("notificationSettings")
-    public Object getNotificationSettings() {
+    public NotificationSettings getNotificationSettings() {
         return notificationSettings;
     }
 
@@ -323,21 +258,6 @@ public class CalendarList {
         return this;
     }
 
-    @JsonProperty("deleted")
-    public Boolean getDeleted() {
-        return deleted;
-    }
-
-    @JsonProperty("deleted")
-    public void setDeleted(Boolean deleted) {
-        this.deleted = deleted;
-    }
-
-    public CalendarList withDeleted(Boolean deleted) {
-        this.deleted = deleted;
-        return this;
-    }
-
     @JsonProperty("conferenceProperties")
     public ConferenceProperties getConferenceProperties() {
         return conferenceProperties;
@@ -353,39 +273,19 @@ public class CalendarList {
         return this;
     }
 
-	public List<Calendars> getCalendarLists() {
-		return calendarList;
-	}
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
 
-	public Calendars getCalendar(String id) {
-		Calendars calendar = null;
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
 
-		if(calendarList == null) {
-			return null;
-		}
-			for(Calendars c: calendarList) {
-				if(c.getId().equals(id)) {
-					calendar = c;
-					break;
-				}
-			}
-			return calendar;
-		}
-		
-	public void addCalendar(Calendars c) {
-		if(calendarList==null) {
-			calendarList = new ArrayList<Calendars>();
-		}
-		calendarList.add(c);
-	}
-	public void deleteCalendar(Calendars c) {
-		calendarList.remove(c);
-	}
-	public void deleteCalendar(String id) {
-		Calendars c = getCalendar(id);
-		if(c!=null) {
-			calendarList.remove(c);
-		}
-	}
-	}
+    public CalendarList withAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+        return this;
+    }
 
+}
