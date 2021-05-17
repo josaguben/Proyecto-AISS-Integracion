@@ -25,11 +25,7 @@ import aiss.model.repository.MapCalendarListRepository;
 
 @Path("/calendarList")
 public class CalendarListResource {
-	
-	String GOOGLE_CALENDAR_API_KEY = "AIzaSyCGJRr_aK1DeSbaPCkbUOLl0KoIx_mQmuU";
-	String calendarId = "";
-	String uri = "https://www.googleapis.com/calendar/v3/users/me/calendarList/" + calendarId + "key=" + GOOGLE_CALENDAR_API_KEY;
-	
+		
 	
 	/*Singleton */
 	private static CalendarListResource _instance=null;
