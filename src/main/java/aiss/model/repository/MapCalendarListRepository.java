@@ -4,13 +4,14 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import aiss.model.Calendar;
 import aiss.model.CalendarList;
 import aiss.model.Calendars;
 import aiss.model.Event;
 
 public class MapCalendarListRepository implements CalendarListRepository{
 		
-	Map<String, Calendars> calendarsMap;
+	Map<String, Calendar> calendarsMap;
 	Map<String, CalendarList> calendarListMap;
 	Map<String, Event> EventsMap;
 
@@ -32,7 +33,7 @@ public class MapCalendarListRepository implements CalendarListRepository{
 	public void init() {
 		
 		calendarListMap = new HashMap<String,CalendarList>();
-		calendarsMap = new HashMap<String,Calendars>();
+		calendarsMap = new HashMap<String,Calendar>();
 		EventsMap = new HashMap<String,Event>();
 		
 	}

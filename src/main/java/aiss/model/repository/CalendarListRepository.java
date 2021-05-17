@@ -1,20 +1,28 @@
 package aiss.model.repository;
 
 import java.util.Collection;
+
+import aiss.model.Calendar;
 import aiss.model.CalendarList;
-import aiss.model.Calendars;
 import aiss.model.Event;
 
 public interface CalendarListRepository {
 	
 	// Calendars
-	public void addCalendar(Calendars c);
+	public void addCalendar(Calendar c);
 	
-	public void deleteCalendar(Calendars c);
+	public void deleteCalendar(Calendar c);
 	public void deleteCalendar(String id);
-	public void updateCalendar(Calendars c);
-	public Calendars getCalendar(String id);
-	public Collection<Calendars> getAllCalendars();
+	public void updateCalendar(Calendar c);
+	public Calendar getCalendar(String id);
+	public Collection<Calendar> getAllCalendars();
+	
+	// CalendarList
+	
+	public Collection<CalendarList> getAllCalendarList();
+	public void deleteCalendarList(String id);
+	public void deleteCalendarList(Calendar c);
+	
 		
 	
 	//Event
